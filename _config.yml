@@ -1,0 +1,11 @@
+title: Easy NAS Player
+description: LG TV 에서 Synology NAS 의 사진과 동영상을 보는 앱 Easy NAS Player
+url: https://yjinchoi.github.io
+baseurl: /easynas-tv-support
+repository: yjinchoi/easynas-tv-support
+lang: ko
+exclude:
+  - README.md
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }

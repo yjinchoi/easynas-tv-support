@@ -1,0 +1,54 @@
+<!doctype html>
+{%- if page.lang == 'en' -%}{%- assign en = true -%}{%- else -%}{%- assign en = false -%}{%- endif -%}
+{%- if en -%}{%- assign home = '/en/' -%}{%- else -%}{%- assign home = '/' -%}{%- endif -%}
+<html lang="{{ page.lang | default: site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:image" content="{{ '/assets/img/icon-512.png' | absolute_url }}">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="icon" type="image/png" href="{{ '/assets/img/icon-32.png' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+  {%- if page.alt %}
+  <link rel="alternate" hreflang="{% if en %}ko{% else %}en{% endif %}" href="{{ page.alt | absolute_url }}">
+  {%- endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="{{ home | relative_url }}">
+        <img src="{{ '/assets/img/icon-192.png' | relative_url }}" alt="" width="36" height="36">
+        <span>Easy NAS Player</span>
+      </a>
+      <nav aria-label="{% if en %}Main{% else %}주 메뉴{% endif %}">
+        {%- if en %}
+        <a href="{{ '/en/privacy/' | relative_url }}">Privacy</a>
+        <a href="{{ '/en/support/' | relative_url }}">Support</a>
+        <a href="{{ '/en/eula/' | relative_url }}">EULA</a>
+        {%- else %}
+        <a href="{{ '/privacy/' | relative_url }}">개인정보처리방침</a>
+        <a href="{{ '/support/' | relative_url }}">지원</a>
+        <a href="{{ '/eula/' | relative_url }}">이용약관</a>
+        {%- endif %}
+        {%- if page.alt %}
+        <a class="lang" href="{{ page.alt | relative_url }}" lang="{% if en %}ko{% else %}en{% endif %}">{% if en %}한국어{% else %}English{% endif %}</a>
+        {%- endif %}
+      </nav>
+    </div>
+  </header>
+  <main class="wrap {{ page.class }}">
+    {{ content }}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© 2026 JJ Labs · <a href="mailto:jjlab-support@googlegroups.com">jjlab-support@googlegroups.com</a><br>
+      {% if en %}Easy NAS Player is not affiliated with Synology Inc. Synology, DSM and QuickConnect are trademarks of Synology Inc.{% else %}Easy NAS Player 는 Synology Inc. 와 제휴 관계가 없는 독립 앱입니다. Synology, DSM, QuickConnect 는 Synology Inc. 의 상표입니다.{% endif %}</p>
+    </div>
+  </footer>
+</body>
+</html>
